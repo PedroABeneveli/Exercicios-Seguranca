@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <random>
+#include <chrono>
 
 using namespace std;
 
@@ -11,7 +13,15 @@ string column_transposition_enc(string plain_text, string k) {
     vector<char> letter_columns[26];
     int idx_no_space = 0;
 
-    for (int i = 0 ; i < plain_text.size() ; i++) {
+    // padding adicionando caracteres pseudo-aleatorios
+    while (((int) plain_text.size()) % 26 != 0) {
+        mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count());
+        int letra = uniform_int_distribution<int>(0, 25)(rng);
+
+        plain_text.push_back(letra + 'A');
+    }
+
+    for (int i = 0 ; i < (int) plain_text.size() ; i++) {
         if (plain_text[i] == ' ') continue;
 
         letter_columns[k[idx_no_space%k.size()]-'A'].push_back(plain_text[i]);
