@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include "columnarTransposition.cpp"
 
 using namespace std;
 
@@ -12,8 +13,7 @@ pair<string, string> brute_force(string cipher_text) {
     string plain_text, user_ans;
 
     do {
-        // basicamente faz a funcao dec
-        // ... 
+        plain_text = column_transposition_dec(cipher_text, poss_key);
 
         cout << "Chave " << poss_key << ": "<< plain_text << '\n';
         cout << "Esta correto? (Digite Y se sim)\n";
