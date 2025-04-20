@@ -1,4 +1,7 @@
-#include <iostream>
+#ifndef SHIFT_CIPHER
+#define SHIFT_CIPHER
+
+#include "imports.h"
 
 using namespace std;
 
@@ -18,6 +21,7 @@ string shift_cipher_enc(string plain_text, int k) {
 // e retorna uma string composta por letras maiusculas e espaco, o plain text
 string shift_cipher_dec(string cipher_text, int k) {
     string plain_text = "";
+    k = k%26;
 
     for (char c : cipher_text) {
         plain_text.push_back(c == ' ' ? ' ' : 'A' + (c-'A'-k + 26)%26);
@@ -25,3 +29,5 @@ string shift_cipher_dec(string cipher_text, int k) {
 
     return plain_text;
 }
+
+#endif

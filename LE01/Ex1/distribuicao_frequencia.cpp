@@ -1,21 +1,13 @@
-#include <vector>
-#include <algorithm>
-#include <iostream>
+#ifndef DISTR_FREQ
+#define DISTR_FREQ
+
+#include "imports.h"
+#include "shiftCipher.cpp"
 
 using namespace std;
 
 // alfabeto ordenado pela frequencia de cada letra na lingua portuguesa
 vector<char> mais_freq_pt = {'A', 'E', 'O', 'S', 'R', 'I', 'D', 'C', 'N', 'T', 'M', 'U', 'P', 'L', 'V', 'G', 'F', 'B', 'Q', 'H', 'Z', 'J', 'X', 'K', 'Y', 'W'};
-
-string shift_cipher_dec(string cipher_text, int k) {
-    string plain_text = "";
-
-    for (char c : cipher_text) {
-        plain_text.push_back(c == ' ' ? ' ' : 'A' + (c-'A'-k + 26)%26);
-    }
-
-    return plain_text;
-}
 
 // ideia:
 //  - primeiro contamos a frequencia das letras no texto cifrado
@@ -25,7 +17,8 @@ vector<pair<int, string>> distribuicao_frequencia(string cipher_text) {
     vector<int> freq(26, 0);
 
     for (int i = 0 ; i < (int) cipher_text.size() ; i++) {
-        freq[cipher_text[i] - 'A']++;
+        if (cipher_text[i] != ' ') 
+            freq[cipher_text[i] - 'A']++;
     }
 
     vector<pair<int, char>> freq_ordenada;
@@ -63,12 +56,4 @@ vector<pair<int, string>> distribuicao_frequencia(string cipher_text) {
     return result;
 }
 
-int main() {
-    string s;
-    cin >> s;
-
-    auto x = distribuicao_frequencia(s);
-    for (auto p : x) {
-        cout << p.first << ": " << p.second << '\n';
-    }
-}
+#endif

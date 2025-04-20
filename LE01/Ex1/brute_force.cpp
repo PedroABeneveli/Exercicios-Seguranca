@@ -1,5 +1,8 @@
-#include <iostream>
-#include <vector>
+#ifndef BRUTE_FORCE
+#define BRUTE_FORCE
+
+#include "imports.h"
+#include "shiftCipher.cpp"
 
 using namespace std;
 
@@ -9,14 +12,10 @@ vector<string> brute_force_attack(string cipher_text) {
     vector<string> possibilities(26);
 
     for (int i = 0 ; i < 26 ; i++) {
-        string plain_text = "";
-
-        for (char c : cipher_text) {
-            plain_text.push_back(c == ' ' ? ' ' : 'A' + (c-'A' - i + 26)%26);
-        }
-
-        possibilities[i] = plain_text;
+        possibilities[i] = shift_cipher_dec(cipher_text, i);
     }
 
     return possibilities;
 }
+
+#endif
