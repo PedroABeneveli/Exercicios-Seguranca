@@ -66,3 +66,11 @@ string column_transposition_dec(string cipher_text, string k) {
 
     return plain_text;
 }
+
+/*
+int main() {
+    string s;
+    cin >> s;
+    cout << column_transposition_enc(s, "WZQCMEGOIXPSTKDRUVFALHYJNB") << '\n';
+}
+*/
