@@ -1,5 +1,7 @@
-#include <iostream>
-#include <algorithm>
+#ifndef BRUTE_FORCE
+#define BRUTE_FORCE
+
+#include "imports.h"
 #include "columnarTransposition.cpp"
 
 using namespace std;
@@ -23,5 +25,7 @@ pair<string, string> brute_force(string cipher_text) {
 
     } while (next_permutation(poss_key.begin(), poss_key.end()));
 
-    return {"Ue", "entao eh isso"};
+    return {"Chave nao encontrada", ";-;"};
 }
+
+#endif

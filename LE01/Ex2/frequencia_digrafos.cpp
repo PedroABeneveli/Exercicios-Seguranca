@@ -1,3 +1,6 @@
+#ifndef FREQ_PT
+#define FREQ_PT
+
 double freq_pt[26][26];
 
 // copiando da tabela
@@ -730,3 +733,5 @@ void init_freq() {
     freq_pt[25][24] = 0.00;
     freq_pt[25][25] = 0.02;
 }
+
+#endif
