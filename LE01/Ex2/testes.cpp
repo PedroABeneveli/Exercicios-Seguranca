@@ -2,6 +2,7 @@
 #include "columnarTransposition.cpp"
 #include "keyGenerator.cpp"
 #include "brute_force.cpp"
+#include "distribuicao_frequencia.cpp"
 
 using namespace std;
 
@@ -45,15 +46,16 @@ int main() {
         cout << "Chave: " << chave.second << '\n';
         cout << "Texto em claro:\n" << chave.first << '\n';
     } else if (op == 5) {
+        init_freq();
         cout << "Digite o texto cifrado a ser quebrado na linha abaixo:\n";
         getline(cin, texto); // para descartar o \n no final da linha
         getline(cin, texto); 
 
         cout << '\n';
-        //vector<pair<int, string>> possiveis = distribuicao_frequencia(texto);
-        //for (pair<int, string> p : possiveis) {
-        //    cout << "Texto em claro com a chave " << p.first << ": " << p.second << '\n';
-        //}
+        vector<pair<string, string>> possiveis = distribuicao_frequencia(texto);
+        for (pair<string, string> p : possiveis) {
+            cout << "Texto em claro com a chave " << p.first << ": " << p.second << '\n';
+        }
     } else {
         cout << "Operacao invalida\n";
     }
