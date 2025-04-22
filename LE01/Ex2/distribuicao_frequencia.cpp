@@ -31,7 +31,6 @@ vector<pair<string, string>> distribuicao_frequencia(string cipher_text) {
 
     for (int i = 0 ; i < tam_grupo - (tam_grupo > 1 ? 1 : 0) ; i++) {
         for (int letra1 = 0 ; letra1 < 26 ; letra1++) {
-            double freq_acc = 0.0;
             for (int letra2 = 0 ; letra2 < 26 ; letra2++) {
                 if (letra1 == letra2) continue;
 

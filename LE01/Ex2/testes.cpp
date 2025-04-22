@@ -54,7 +54,7 @@ int main() {
         cout << '\n';
         vector<pair<string, string>> possiveis = distribuicao_frequencia(texto);
         for (pair<string, string> p : possiveis) {
-            cout << "Texto em claro com a chave " << p.first << ": " << p.second << '\n';
+            cout << "Texto em claro com a chave " << p.first << ": " << p.second << "\n\n";
         }
     } else {
         cout << "Operacao invalida\n";
